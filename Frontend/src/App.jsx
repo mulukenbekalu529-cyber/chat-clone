@@ -48,7 +48,7 @@ function App() {
         setConversations(response.data.data.conversations);
       }
       // If success is false, we silently do nothing here — you could
-      // add an else branch to show an error state if you want.
+      // add an else branch to show an error state if we want.
     } catch (error) {
       console.error("Error fetching conversations:", error);
     }
@@ -56,7 +56,7 @@ function App() {
 
   // POST conversation
   const handleSendMessage = async (question) => {
-    // Show user message immediately (optimistic update) — Date.now() is
+    // Show user message immediately — Date.now() is
     // just a temporary, throwaway id since this message isn't saved
     // to the database yet and has no real id.
     const tempUserMessage = {
@@ -114,7 +114,7 @@ function App() {
       setIsLoading(false);
     }
   };
-
+// the return statement renders the main app structure, including the sidebar, chat header, message list, and chat input components. It passes necessary props to these components, such as conversations, loading state, and the function to handle sending messages.
   return (
     <div className="app">
       <Sidebar />
