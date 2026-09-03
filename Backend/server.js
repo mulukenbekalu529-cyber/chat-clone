@@ -1,5 +1,4 @@
 // Loads variables from a .env file into process.env before anything else runs
-// (e.g. DB credentials, Gemini API key)
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
