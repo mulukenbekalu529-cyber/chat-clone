@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import db from "./db/db.config.js";
 import chatRoutes from "./routes/chat.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 // Create the main Express application
 const app = express();
@@ -26,10 +27,11 @@ app.get("/", (req, res) => {
   res.send("ChatGPT Clone backend is running");
 });
 
-// Mount the chat router under /api/chat, so its routes become
-// /api/chat/conversations, 
+// Mount the chat router under /api/chat
 app.use("/api/chat", chatRoutes);
 
+// Mount the authentication router under /api/auth
+app.use("/api/auth", authRoutes);
 // Fire a trivial query on startup just to confirm the DB is reachable.
 // This doesn't block the server from starting — it just logs success/failure.
 db.query("SELECT 1")
