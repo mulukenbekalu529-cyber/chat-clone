@@ -1,5 +1,6 @@
 import "dotenv/config";
 import mysql from "mysql2/promise";
+import { readFileSync } from "node:fs";
 
 const useSSL = process.env.DB_SSL === "true";
 
@@ -12,6 +13,7 @@ const db = mysql.createPool({
 
   ...(useSSL && {
     ssl: {
+      ca: readFileSync(new URL("../certs/ca.pem", import.meta.url), "utf8"),
       rejectUnauthorized: true,
     },
   }),
