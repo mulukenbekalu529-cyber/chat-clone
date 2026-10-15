@@ -15,7 +15,7 @@ import {
 import axios from "axios";
 import styles from "./Sidebar.module.css";
 
-const API_BASE_URL = "http://localhost:3008/api";
+const API_BASE_URL = "https://chat-clone-mlrm.onrender.com/api";
 
 export default function Sidebar({
   onNewChat,

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:3008/api";
+const API_BASE_URL = "https://chat-clone-mlrm.onrender.com/api";
 
 function Login() {
   const navigate = useNavigate();
