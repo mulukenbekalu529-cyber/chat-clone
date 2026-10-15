@@ -23,7 +23,17 @@ const db = mysql.createPool({
   queueLimit: 0,
 });
 
-// Create the table automatically if it doesn't exist yet
+// Create the tables automatically if they don't exist yet
+await db.query(`
+  CREATE TABLE IF NOT EXISTS users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  )
+`);
+
 await db.query(`
   CREATE TABLE IF NOT EXISTS conversations (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -35,6 +45,7 @@ await db.query(`
     INDEX idx_session_id (session_id)
   )
 `);
+
 console.log("Tables ready");
 
 export default db;
